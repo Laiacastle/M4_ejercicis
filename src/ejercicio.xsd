@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<xs:schema xmlns:xs="./exemple_1_xsd.xml"/>
+
+<xs:element name="receptes" type="receptes">
+
+    <xs:element name="recepta" type="receptes">
+        <xs:sequence name="nom">
+        <xs:element name="passos">
+            <xs:sequence name="pas" type="xs:string"/>
+        </xs:element>
+    </xs:element>
+    <xd:element name="recepta" type="receptes">
+        <xs:sequence name="nom">
+        <xs:element name="passos">
+            <xs:sequence name="pas" type="xs:string"/>
+        </xs:element>
+    </xd:element>
+</xs:element>
