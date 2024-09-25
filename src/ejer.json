@@ -1,0 +1,119 @@
+{
+  "ejercicio_1": {
+
+      "nom": "Joan Garcia",
+      "naixement": "24/02/2001",
+      "Lloc": "Barcelona"
+
+  },
+
+
+ "ejercicio_1.2" :
+  [
+
+  {
+      "nom": "Pasqual",
+      "tipus": "Bar de tapes",
+      "adreça": "Av diagonal 232",
+      "propietari": "Joan ALcover"
+  },
+  {
+      "nom": "Meravelles",
+      "tipus": "Restaurant de menú",
+      "adreça": "Meridiana 111",
+      "propietari": "Maria Pasqual"
+  },
+  {
+      "nom": "Racó de l'Avia",
+      "tipus": "Restaurant de menú",
+      "adreça": "Av Roma 221",
+      "propietari": "Alba Puig"
+  }
+  ],
+
+  "ejercicio_1.3" :
+   [  {
+
+      "nom" : "Blau sobre Blanc",
+      "Tipus" : "Cuadre abstracte",
+      "Autor" : "Pere Àguila",
+      "any" : 2014,
+      "tècnica" : "Oli"
+       },
+       {
+
+       "nom" : "Gris Obscur",
+       "Tipus" : "Cuadre abstracte",
+       "Autor" : "Pere Àguila",
+       "any" : 2010,
+       "tècnica" : "aquarel·la"
+       },
+       {
+
+        "nom" : "Camí llarg",
+        "Tipus" : "escultura",
+        "Autor" : "Pere Àguila",
+        "any" : 1981,
+        "tècnica" : "marbre"
+
+        }
+   ],
+
+  "ejercicio_2" :
+
+      {
+        "debug": "on",
+        "window": {
+          "title": "Sample Konfabulator Widget",
+          "name": "main_window",
+          "width": 500,
+          "height": 500
+        },
+      "text": {
+        "data": "CLick Here",
+        "size": 36,
+        "style": "bold",
+        "name": "text1",
+        "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90"
+      }
+      }
+  ,
+
+  "ejercicio_3" :
+    {
+      "calle" :  "C/ PONTEVEDRA, 58B",
+      "bicicletas" : null
+
+    },
+
+  "ejercicio_4" : [
+    {
+      "nom" : "Trotilla de patatas sin cebolla",
+      "ingredientes" : "2 huevos y 3 patatas",
+      "pasos" : [
+
+          "pela las patatas y coratalas como mas te guste",
+          "calienta la sartés con un poco de aceite y pon a hacer las patatas hasta que esten doradas",
+          "Mientras las patatas se hacen, bate los huevos hasta que se integren bien",
+          "hecha los huevos en la sartén junto con las patatas y dale la vuelta cuando esten hechos",
+          "Disfruta"
+
+      ] }, {
+      "nom" : "Trotilla de patatas con cebolla",
+      "ingredientes" : [ "2 huevos",  "3 patatas", "Una cebolla" ],
+      "pasos" : [
+
+          "pela las patatas y coratalas como mas te guste",
+          "pela la cebolla y cortala en trocitos pequeños",
+          "calienta la sartés con un poco de aceite y pon a hacer las patatas y la cebolla hasta que esten doradas",
+          "Mientras las patatas se hacen, bate los huevos hasta que se integren bien",
+          "hecha los huevos en la sartén junto con las patatas y dale la vuelta cuando esten hechos",
+          "Disfruta"
+
+      ]}
+
+  ]
+
+
+
+}
