@@ -1,0 +1,59 @@
+nav{
+    display: flex;
+    background-color: skyblue;
+    margin: 20px;
+    padding: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+
+}
+div{
+    margin: 10px;
+}
+
+.b1 button{
+
+}
+.b2 button{
+
+}
+.b3 button{
+
+}
+.b4 button{
+
+}
+.bx button{
+
+}
+#first{
+    justify-content: space-evenly;
+}
+#second{
+    flex-direction: column-reverse;
+}
+#third{
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 50px;
+}
+#forth{
+    flex-direction: row;
+}
+
+#forth>div{
+
+    align-content: center;
+
+    background-color: greenyellow;
+    padding: 10px;
+    width: max-content;
+    height: max-content;
+}
+#forth .b3{
+    order: -1;
+}
+#forth .b2{
+    flex-grow: 4;
+}
