@@ -1,0 +1,39 @@
+#figure1{
+    font-weight: bold;
+    font-size: 50px;
+    color: black;
+    border: 1px;
+    border-style: solid;
+
+    border-color: darkblue;
+    background-color: darkslategray;
+
+}
+#figure2{
+    border: 2px;
+    border-style: solid;
+
+    border-color: black;
+    background-color: indianred;
+}
+#figure3{
+    border: 2px;
+    border-style: solid;
+
+    border-color: black;
+    background-color: lightgoldenrodyellow;
+    padding: 10%;
+}
+
+
+@media (min-width: 100px) and (max-width: 600px) and (min-height: 50px){
+    #figure1 {
+        font-size: 20px;
+    }
+    #figure2 {
+        display: none;
+    }
+    #figure3 {
+        padding: 10px;
+    }
+}
