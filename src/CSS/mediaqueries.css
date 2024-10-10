@@ -24,3 +24,16 @@
     background-color: lightgoldenrodyellow;
     padding: 10%;
 }
+
+
+@media (min-width: 100px) and (max-width: 600px) and (min-height: 50px){
+    #figure1 {
+        font-size: 20px;
+    }
+    #figure2 {
+        display: none;
+    }
+    #figure3 {
+        padding: 10px;
+    }
+}

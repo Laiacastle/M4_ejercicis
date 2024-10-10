@@ -1,0 +1,43 @@
+{
+  "equips": [
+    {
+      "nom": "Els \"Verds\" fregits",
+      "jugadors": 12,
+      "victories": 6,
+      "derrotes": 3,
+      "capita": {
+        "nom": "Marc Pere",
+        "DNI": "09376283A"
+      },
+      "samarreta": [
+        "verd",
+        "groc",
+        "blau"
+      ],
+      "pavello": {
+        "nom": "Marina",
+        "adreça": "Avinguda Diagonal 424"
+      },
+      "cuotaPagada": "Si"
+    },
+    {
+      "nom": "Forts<>Forts",
+      "jugadors": 15,
+      "victories": 3,
+      "derrotes": 9,
+      "capita": {
+        "nom": "Ona Pons",
+        "DNI": "48754874X"
+      },
+      "samarreta": ["verd","negre"],
+
+
+      "pavello": {
+        "nom": "Meridiana",
+        "adreça": "Avinguda Meridiana 244"
+      },
+      "cuotaPagada": "No"
+    }
+
+  ]
+}
