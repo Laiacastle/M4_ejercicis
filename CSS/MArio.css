@@ -1,0 +1,40 @@
+div{
+    width: 2000px;
+}
+body{
+    background-color: skyblue;
+    overflow: hidden;
+}
+#clouds{
+    height: 73px;
+    background-image: url("./mario-resources/mario/clouds.png");
+    background-repeat: repeat-x;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 2;
+}
+
+#mario{
+    height: 113px;
+    background-image: url("./mario-resources/mario/mario.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0.5px;
+    z-index: 0;
+
+}
+
+
+#base{
+    height: 14px;
+    background-image: url("./mario-resources/mario/base.png");
+    background-repeat: repeat-x;
+
+    position: absolute;
+    bottom: 0.5px;
+    z-index: 1;
+
+
+
+}
