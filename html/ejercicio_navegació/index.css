@@ -1,0 +1,180 @@
+@font-face {
+    font-family: "eracake";
+    src: url('./fuentes/eracake/Eracake.ttf');
+}
+
+.final{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+
+}
+body{
+    background-color: blanchedalmond;
+    padding: 20px;
+}
+h1{
+
+    font-family: "eracake";
+    color: white;
+    font-size: 70px;
+    text-align: center;
+}
+h2{
+    font-family: "eracake";
+}
+nav{
+    padding-top: 20px;
+    text-align: center;
+
+    background-image: url("./imagenes/menu-plantas.jpg");
+
+}
+ul a{
+    padding: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    top:10px;
+    text-decoration: none;
+    color: black;
+    font-family: "eracake";
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.menu{
+    grid-area: nav;
+    padding: 20px;
+    border-style: solid;
+    border-color: white;
+}
+
+#lista{
+    width: 50%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    left: 20%;
+    top: 10%;
+
+    text-align: center;
+    justify-content: center;
+}
+.link{
+    color: black;
+    text-decoration: none;
+}
+.tit-animal{
+
+    margin-top: 80px;
+    color: dimgray;
+    font-weight: bold;
+    font-size: 20px;
+    grid-area: animal;
+    background-color: skyblue;
+    border-style: solid;
+    border-color: blue;
+}
+
+#biblografia{
+    padding-top: -1000px;
+    text-align: left;
+    grid-area: biblo;
+
+}
+
+
+#intro{
+    grid-area: intro;
+}
+
+#tortuga{
+    grid-area: tortuga;
+    background-color: lightgreen;
+    border-style: solid;
+    border-color: gray;
+}
+#nutria{
+    grid-area: nutria;
+    background-color: pink;
+    border-style: solid;
+    border-color: gray;
+}
+#murcielago{
+    grid-area: murcielago;
+    background-color: lavender;
+    border-style: solid;
+    border-color: gray;
+}
+#siguenos{
+    grid-area: sigue;
+}
+#licencia{
+    grid-area: licencia;
+
+}
+#texto-d{
+    display: grid;
+    grid-template-columns:50px 50px;
+    grid-template-rows: 20px auto;
+    grid-template-areas:
+                "conv pob"
+                "vul dec";
+}
+.conv{
+    grid-area: conv;
+}
+.pob{
+    grid-area: pob;
+}
+.vul{
+    grid-area: vul;
+}
+.dec{
+    grid-area:dec;
+}
+@media (max-width: 800px) and (min-width: 300px){
+    #lista{
+        display: grid;
+        grid-template-columns: 200px 200px 30%;
+        grid-template-rows: 50px 1100px;
+        grid-template-areas:
+                    "titulo titulo titulo"
+                    "tortuga nutria murcielago";
+
+        font-size: 10px;
+    }
+    #top{
+        grid-area: titulo;
+    }
+    img{
+        width: 150px;
+    }
+    #intro{
+        display: none;
+    }
+    #h1{
+        display: none;
+    }
+    #texto-d{
+        display: none;
+    }
+    #murcielago{
+        grid-area: murcielago;
+        grid-column: 2;
+    }
+    #nutria{
+        grid-area: nutria;
+        grid-column: 1;
+    }
+
+    #tortuga{
+        grid-area: tortuga;
+        grid-column: 0;
+    }
+}
