@@ -1,6 +1,6 @@
 @font-face {
     font-family: "eracake";
-    src: url('./fuentes/eracake/Eracake.ttf');
+    src: url('../../fuentes/eracake/Eracake.ttf');
 }
 img{
     width: 100%;
@@ -22,7 +22,7 @@ h2{
 nav{
     padding-top: 20px;
     text-align: center;
-    background-image: url("./imagenes/menu-plantas.jpg");
+    background-image: url("../../imagenes/menu-plantas.jpg");
 }
 ul a{
     padding: 10px;
@@ -162,7 +162,7 @@ ul a{
         border-style: solid;
         border-color: white;
         z-index: 6;
-        background-image: url("./imagenes/menu-plantas.jpg");
+        background-image: url("../../imagenes/menu-plantas.jpg");
     }
     nav{
         height: 93px;

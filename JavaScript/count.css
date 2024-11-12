@@ -1,0 +1,38 @@
+button{
+    background-color: lightgreen;
+    width: 300px;
+    color: white;
+    font-size: 30px;
+    border-style: dotted;
+    border-color: green;
+
+}
+body{
+    align-items: center;
+    text-align: center;
+}
+p{
+    font-size: 50px;
+    color: cornflowerblue;
+    font-weight: bold;
+}
+.count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#p1{
+    color: cornflowerblue;
+    background-color: lightpink;
+}
+#p2{
+    color: lightpink;
+    background-color: cornflowerblue;
+}

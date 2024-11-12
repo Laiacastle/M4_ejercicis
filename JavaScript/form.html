@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="form.js" type="module"></script>
+    <link href="form.css" rel="stylesheet">
+</head>
+<body>
+
+<form id="form" action="" method="post">
+  <h1>Formulari de dades personals</h1>
+  <div class="name">
+    <div>
+      <p class="error"></p>
+      <label class="label" for="name">Nom</label>
+    </div>
+    <input id="name" type="text" name="user_name"/>
+  </div>
+  <div class="cognom">
+    <div>
+      <p class="error"></p>
+      <label class="label" for="cognom" >Cognom</label>
+    </div>
+    <input id="cognom" name="user_message"></input>
+  </div>
+  <div class="email">
+    <div>
+    <p class="error"></p>
+    <label class="label" for="email">El teu correu electronic</label>
+    </div>
+    <input id="email" type="email" name="user_email"/>
+  </div>
+  <div class="edat">
+    <div>
+      <p class="error"></p>
+      <label class="label" for="edat">Edat</label>
+    </div>
+    <input id="edat" type="text" name="user_titol"/>
+  </div>
+  <div class="telefon">
+    <div>
+      <p class="error"></p>
+      <label class="label" for="telefon" >Telefon</label>
+    </div>
+    <input id="telefon" name="user_message"></input>
+  </div>
+  <div class="adreça">
+    <div>
+      <p class="error"></p>
+      <label class="label" for="adreça" >Adreça</label>
+    </div>
+    <input id="adreça" name="user_message"></input>
+  </div>
+
+  <div id="menor">
+    <div class="menor" id="nomtutor">
+      <p class="error"></p>
+      <label for='TutorN'>Nom del tutor</label>
+    </div>
+      <input class="menor" id='TutorN'></input>
+
+    <div class="menor" id="cognomtutor">
+      <p class="error"></p>
+      <label for='TutorC'>Cognom del tutor</label>
+    </div>
+      <input class="menor" id='TutorC'></input>
+  </div>
+  <div class="button">
+    <button id="button" type="button">Enviar Missatge</button>
+  </div>
+
+</form>
+</body>
+</html>
