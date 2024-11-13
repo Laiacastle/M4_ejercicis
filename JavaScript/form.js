@@ -1,6 +1,7 @@
 const button = document.querySelector("#button");
 const edat = document.querySelector("#edat");
 const menor = document.querySelector("#menor");
+let todo = false;
 const inputs = document.querySelectorAll("input");
 button.addEventListener("click", check);
 menor.style.display = 'none';
@@ -11,6 +12,7 @@ function check(){
         const label = input.parentNode.querySelector(".label")
         error.textContent = "";
         if(input.value.length === 0) {
+            todo = false;
             if(mono){
 
                 error.textContent = `Error! ${label.textContent} is empty`;
@@ -22,7 +24,10 @@ function check(){
                     break;
                 }
             }
+        }else{
+            todo = true;
         }
+
 
     }
     if (edat.value < 18) {
@@ -32,6 +37,9 @@ function check(){
 
         menor.style.display = 'none';
         //mono = false;
+    }
+    if(todo){
+        window.location.replace("./enviat.html");
     }
 
 }
