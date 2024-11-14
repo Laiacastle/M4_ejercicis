@@ -1,0 +1,74 @@
+body{
+    align-content: center;
+    text-align: center;
+    background-image: url("./img/gato2.png");
+    background-repeat: repeat-y;
+    background-size: cover;
+    font-family: "DejaVu Math TeX Gyre";
+    padding-top: 12%;
+    overflow: hidden;
+}
+#tdo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: bisque;
+    padding: 20px;
+}
+#titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    height: 200px;
+    align-items: center;
+}
+h1{
+    font-size: 40px;
+    color: saddlebrown;
+    font-weight: bold;
+}
+#itb{
+    color: blue;
+    font-size: 60px;
+}
+#botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#emoji{
+    margin-bottom: 20px;
+    background-color: bisque;
+    border-style: none;
+    font-size: 100px;
+    width: 100px;
+    height: 90px;
+    padding-bottom: 70px;
+    align-content: center;
+    align-items: center;
+}
+#info{
+    margin-bottom: 20px;
+    background-color: cornflowerblue;
+    font-weight: bold;
+    border-style: solid;
+    border-color: darkblue;
+    color: darkblue;
+}
+#refresh{
+    background-color: darkseagreen;
+    border-style: dashed;
+    border-color: darkslategray;
+    width: 200px;
+    height: 50px;
+    color: darkslategray;
+    border-radius: 30px;
+    font-weight: bolder;
+    font-size: 25px;
+
+}

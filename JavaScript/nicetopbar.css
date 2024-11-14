@@ -3,7 +3,7 @@ header{
     background-image: url("./img/fondo-top-bar.jpg");
     text-align: center;
     align-content: center;
-    position: fixed;
+
 }
 h1{
     color: purple;
@@ -11,3 +11,4 @@ h1{
     font-size: 60px;
     background-color: rgb(255 255 255 / 0.5);
 }
+

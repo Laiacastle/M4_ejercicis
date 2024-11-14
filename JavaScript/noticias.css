@@ -1,0 +1,17 @@
+body{
+    background-image: url("./img/gato3.jpg");
+    background-repeat: repeat-y;
+    font-family: eracake;
+    background-size: cover;
+    align-content: center;
+    text-align: center;
+}
+#tdo{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0  /0.5);
+    color : antiquewhite;
+}
