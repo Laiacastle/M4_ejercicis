@@ -1,0 +1,23 @@
+
+body{
+    align-content: center;
+    text-align: center;
+}
+#div{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
+    text-align: center;
+}
+.casilla{
+    background-color: gray;
+    border-style: solid;
+    border-color: dimgrey;
+    color: transparent;
+}
+h1{
+    color: darkseagreen;
+    font-family: "Abyssinica SIL";
+
+}
