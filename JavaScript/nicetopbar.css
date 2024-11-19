@@ -3,12 +3,15 @@ header{
     background-image: url("./img/fondo-top-bar.jpg");
     text-align: center;
     align-content: center;
-
+    transition: 0.8s;
+    position: sticky;
+    top: 0px;
+    font-size: 50px;
 }
 h1{
     color: purple;
     font-weight: bolder;
-    font-size: 60px;
+
     background-color: rgb(255 255 255 / 0.5);
 }
 

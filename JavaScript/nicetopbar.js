@@ -1,12 +1,12 @@
 const header = document.querySelector("header");
+
 window.onscroll = function() {
-    scrolled = true;
-}
-setInterval(function(){
-    if(scrolled) {
-        scrolled = false;
-        header.style.height = '10px';
-        header.style.position = "sticky"
-        header.style.top = "3px";
+    console.log(document.body.scrollTop);
+    console.log(document.documentElement.scrollTop);
+    if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        header.style.fontSize = "10px";
     }
-})
+    else{
+        header.style.fontSize = "50px";
+    }
+}
