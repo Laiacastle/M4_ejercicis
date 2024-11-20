@@ -3,36 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>contacta</title>
+    <script src="contact.js" type="module"></script>
+    <link rel="stylesheet" href="constact.css"/>
+
 </head>
 <body>
-    <header>
-        <nav>
+    <header id="header">
+        <nav id="nav">
             <h1>EPEPC</h1>
-            <ul>
+            <ul id="LinkMenu">
                 <li><a href="caretta_caretta.html">Inici</a></li>
                 <li><a href="list.html">Llistat</a></li>
                 <li><a href="contact.html">Contacta</a></li>
             </ul>
         </nav>
     </header>
-    <div>
+    <div id ="form">
         <h2>Contacta</h2>
         <form action="https://formspree.io/f/xnnqaaoe" method="post">
             <div>
-                <label for="name">El teu nom * </label>
-                <input id="name" type="text" name="user_name"/>
+                <div>
+                    <p class="error"></p>
+                    <label for="name">El teu nom * </label>
+                </div>
+                <div>
+                    <input id="name" type="text" name="user_name"/>
+                </div>
             </div>
             <div>
-                <label for="email">El teu correu electronic * </label>
-                <input id="email" type="email" name="user_email"/>
+                <div>
+                    <p class="error"></p>
+                    <label for="email">El teu correu electronic * </label>
+                </div>
+                <div>
+                    <p class="error"></p>
+                    <input id="email" type="email" name="user_email"/>
+                </div>
             </div>
             <div>
-                <label for="titol">Títol * </label>
-                <input id="titol" type="text" name="user_titol"/>
+                <div>
+                    <p class="error"></p>
+                    <label for="titol">Títol * </label>
+                </div>
+                <div>
+                    <p class="error"></p>
+                    <input id="titol" type="text" name="user_titol"/>
+                </div>
             </div>
             <div>
-                <label for="missatge" >Misstge *</label>
-                <textarea id="missatge" name="user_message" rows="12" cols="25"></textarea>
+                <div>
+                    <p class="error"></p>
+                    <label for="missatge" >Misstge *</label>
+                </div>
+                <div>
+                    <p class="error"></p>
+                    <textarea id="missatge" name="user_message" rows="12" cols="25"></textarea>
+                </div>
             </div>
             <div class="button">
                 <button type="submit">Enviar Missatge</button>

@@ -33,10 +33,14 @@ for(const casilla of casillas){
     }
     indexer ++;
 }
+indexer = 0;
 
-
-const prueba = document.querySelector('#a');
+const prueba = document.querySelector(`#${list[indexer]}`);
 prueba.addEventListener("click", Minas);
+indexer ++;
+const dos = document.querySelector(`#b`);
+dos.addEventListener("click", Minas);
+
 function Minas(){
     prueba.style.backgroundColor = "white";
     prueba.style.color = "black";
