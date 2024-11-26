@@ -12,8 +12,9 @@ body{
 }
 /*-------------------------------arriba---------------------------*/
 header{
-    position: sticky;
+    position: fixed;
     top: 0;
+    width: 100%;
     transition: 0.6s;
 }
 nav{
@@ -43,7 +44,9 @@ h1{
 h2{
     font-family: "eracake";
 }
-
+#intro{
+    margin-top: 300px;
+}
 ul a{
     padding: 10px;
     top:10px;
