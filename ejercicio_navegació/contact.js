@@ -6,12 +6,12 @@ window.onscroll = function() {
 
         header.style.height = "100px";
         header.querySelector('h1').style.fontSize = "30px";
-        header.querySelector('#LinkMenu').style.display = 'none';
+        header.querySelector('.menu').style.display = 'none';
     }
     else{
         header.querySelector('h1').style.fontSize = "70px";
         header.style.height = '200px';
-        header.querySelector('#LinkMenu').style.display = 'block';
+        header.querySelector('.menu').style.display = 'block';
     }
 }
 
