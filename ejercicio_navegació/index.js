@@ -46,6 +46,7 @@ const defaults = {
 };
 
 
+
 setTimeout(shoot, 0);
 setTimeout(shoot, 100);
 setTimeout(shoot, 200);
