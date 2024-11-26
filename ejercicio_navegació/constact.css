@@ -3,10 +3,9 @@
     src: url('./fuentes/eracake/Eracake.ttf');
 }
 header{
-
     position: sticky;
     top: 0;
-
+    list-style-type: none;
 }
 
 body{
@@ -21,17 +20,20 @@ nav{
     text-align: center;
     background-image: url("./imagenes/menu-plantas.jpg");
     transition: 2s;
+
 }
 .row{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     list-style-type: none;
+
 }
 .menu{
     padding: 20px;
     border-style: solid;
     border-color: white;
+
 }
 button{
     width: 200px;

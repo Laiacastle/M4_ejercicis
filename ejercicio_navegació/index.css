@@ -10,6 +10,29 @@ body{
     background-color: blanchedalmond;
 
 }
+/*-------------------------------arriba---------------------------*/
+header{
+    position: sticky;
+    top: 0;
+    transition: 0.6s;
+}
+nav{
+    padding-top: 20px;
+    text-align: center;
+    background-image: url("./imagenes/menu-plantas.jpg");
+}
+.menu{
+    border-style: solid;
+    border-color: white;
+    transition: 0.6s;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+/*---------------------------TEXTO-----------------------*/
 h1{
     font-family: "eracake";
     color: white;
@@ -19,11 +42,7 @@ h1{
 h2{
     font-family: "eracake";
 }
-nav{
-    padding-top: 20px;
-    text-align: center;
-    background-image: url("./imagenes/menu-plantas.jpg");
-}
+
 ul a{
     padding: 10px;
     top:10px;
@@ -31,17 +50,11 @@ ul a{
     color: black;
     font-family: "eracake";
 }
-.row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    list-style-type: none;
+.link{
+    color: black;
+    text-decoration: none;
 }
-.menu{
-    padding: 20px;
-    border-style: solid;
-    border-color: white;
-}
+/*----------------------CONTENT----------------------*/
 #lista{
     display: flex;
     list-style-type: none;
@@ -49,14 +62,6 @@ ul a{
     flex-wrap: wrap;
     text-align: center;
     justify-content: space-evenly;
-}
-#img-licencia{
-    width: 160px;
-    height: 5%;
-}
-.link{
-    color: black;
-    text-decoration: none;
 }
 .tit-animal{
     margin-top: 80px;
@@ -68,10 +73,6 @@ ul a{
     background-color: skyblue;
     border-style: solid;
     border-color: blue;
-}
-#biblografia{
-    padding-top: -1000px;
-    text-align: left;
 }
 #tortuga{
     width: 30%;
@@ -94,7 +95,7 @@ ul a{
     border-style: solid;
     border-color: gray;
 }
-
+/*tabla*/
 .texto-d{
     display: grid;
     justify-content: center;
@@ -125,38 +126,51 @@ ul a{
     border-color: white;
     grid-area:dec;
 }
+#butLik{
+    margin-left: 33%;
+    margin-top: 30px;
+}
+#butLik > button{
+    width: 600px;
+    height: 150px;
+    background-color: pink;
+    border-style: dashed;
+    border-color: purple;
+    border-radius: 10px;
+    font-family: eracake;
+    color:purple;
+    font-size: 60px;
+}
+/*--------------------------FINAL------------------*/
 .final{
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+#biblografia{
+    padding-top: -1000px;
+    text-align: left;
+}
+#img-licencia{
+    width: 160px;
+    height: 5%;
+}
+body{cursor: url("./imagenes/cursor.png"), auto;}
+a{Cursor:url("./imagenes/brujula.png"), auto;}
+img{Cursor:url("./imagenes/patron.png"), auto;}
+button{Cursor:url("./imagenes/la-satisfaccion-del-cliente.png"), auto}
+/*-----------------------------------RESPONSIVE-----------------------*/
 @media (max-width: 800px) and (min-width: 300px){
+    /*---------------TOP-------------------------*/
     #top{
         display: none;
     }
-    #lista{
-        display: flex;
-        flex-wrap: wrap;
-
-    }
-    img{
-        width: 300px;
-        height: 180px;
-    }
-    #intro{
-    display: none;
-    }
-    .texto-d{
-
-    }
-    .tit-animal{
-        font-size: 15px;
-        height: 35px;
+    nav{
+        height: 93px;
+        background-image: none;
     }
     .menu{
-        display: flex;
-        position: fixed;
         justify-content: space-evenly;
         width: 85%;
         border-style: solid;
@@ -164,13 +178,27 @@ ul a{
         z-index: 6;
         background-image: url("./imagenes/menu-plantas.jpg");
     }
-    nav{
-        height: 93px;
-        background-image: none;
+    #intro{
+        display: none;
     }
     #tit{
         display: none;
     }
+    /*-----------------CONTENT------------------*/
+    #lista{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    img{
+        width: 300px;
+        height: 180px;
+    }
+
+    .tit-animal{
+        font-size: 15px;
+        height: 35px;
+    }
+
     #murcielago{
          width: 80%;
          background-color: lavender;
@@ -188,5 +216,8 @@ ul a{
         background-color: pink;
         border-style: solid;
         border-color: gray;
+    }
+    #butLik{
+        margin-left: 2%;
     }
 }
