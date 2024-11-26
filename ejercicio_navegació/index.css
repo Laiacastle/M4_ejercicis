@@ -21,25 +21,39 @@ nav{
     padding-top: 20px;
     text-align: center;
     background-image: url("./imagenes/menu-plantas.jpg");
+    transition: 0.5s;
 }
 .menu{
     border-style: solid;
     border-color: white;
-    transition: 0.6s;
+    transition: 0.5s;
 }
 .row{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     list-style-type: none;
+    transition: 0.5s;
 }
-
+.row > li> a:hover{
+    background-color: white;
+    transition: 0.5s;
+    border-radius: 10px;
+    font-size: 20px;
+}
 /*---------------------------TEXTO-----------------------*/
 h1{
     font-family: "eracake";
     color: white;
     font-size: 70px;
     text-align: center;
+}
+#linkTit{
+    color: white;
+    transition: 0.5s;
+}
+#linkTit:hover{
+    font-size: 80px;
 }
 h2{
     font-family: "eracake";

@@ -24,6 +24,12 @@ nav{
     transition: 0.6s;
 
 }
+.row > li> a:hover{
+    background-color: white;
+    transition: 0.5s;
+    border-radius: 10px;
+    font-size: 20px;
+}
 .row{
     display: flex;
     flex-direction: row;
@@ -35,6 +41,13 @@ nav{
     border-style: solid;
     border-color: white;
 
+}
+#linkTit{
+    color: white;
+    transition: 0.5s;
+}
+#linkTit:hover{
+    font-size: 90px;
 }
 button{
     width: 200px;
@@ -49,6 +62,12 @@ button{
 }
 .button{
     padding-top: 30px;
+}
+button:hover{
+    background-color: mediumpurple;
+    transition: 0.5s;
+    color: wheat;
+    border-color: white;
 }
 
 form{
