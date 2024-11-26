@@ -32,6 +32,7 @@ nav{
     justify-content: space-evenly;
     list-style-type: none;
 }
+
 /*---------------------------TEXTO-----------------------*/
 h1{
     font-family: "eracake";
@@ -81,6 +82,12 @@ ul a{
     border-style: solid;
     border-color: gray;
 }
+#tortuga:hover{
+    border-color: whitesmoke;
+    border-style: solid;
+    transition: 0.6s;
+    border-width: 20px;
+}
 #nutria{
     width: 30%;
     height: 100%;
@@ -88,12 +95,24 @@ ul a{
     border-style: solid;
     border-color: gray;
 }
+#nutria:hover{
+    border-color: whitesmoke;
+    border-style: solid;
+    transition: 0.6s;
+    border-width: 20px;
+}
 #murcielago{
     width: 30%;
     height: 160%;
     background-color: lavender;
     border-style: solid;
     border-color: gray;
+}
+#murcielago:hover{
+    border-color: whitesmoke;
+    border-style: solid;
+    transition: 0.6s;
+    border-width: 20px;
 }
 /*tabla*/
 .texto-d{

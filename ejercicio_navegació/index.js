@@ -46,7 +46,17 @@ const defaults = {
 };
 
 
-
 setTimeout(shoot, 0);
 setTimeout(shoot, 100);
 setTimeout(shoot, 200);
+//-----------------------LIST------------
+const botimgtor = document.querySelector("#tortuga-img");
+const botimgnut = document.querySelector("#nutria-img");
+const botimgmur = document.querySelector("#murcielago-img");
+botimgtor.addEventListener("click", cambiar);
+botimgnut.addEventListener("click", cambiar);
+botimgmur.addEventListener("click", cambiar);
+
+function cambiar(){
+
+}
