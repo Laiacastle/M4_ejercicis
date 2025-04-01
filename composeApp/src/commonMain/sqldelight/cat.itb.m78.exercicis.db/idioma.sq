@@ -1,0 +1,16 @@
+
+CREATE TABLE idioma (
+    id INTEGER PRIMARY KEY NOT NULL,
+    text TEXT NOT NULL,
+    language TEXT NOT NULL
+);
+
+CREATE INDEX idioma_full_name ON idioma(text);
+selectAll:
+SELECT * FROM idioma;
+insert:
+INSERT INTO idioma(text, language) VALUES (?, ?);
+find:
+SELECT * FROM idioma WHERE id = ?;
+filter:
+SELECT * FROM  idioma WHERE language = ?;
