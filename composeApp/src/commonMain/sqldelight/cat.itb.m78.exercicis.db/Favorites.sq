@@ -1,0 +1,14 @@
+CREATE TABLE favorites (
+    Id INTEGER PRIMARY KEY NOT NULL,
+    Pokemon_id INTEGER NOT NULL,
+    Name TEXT NOT NULL,
+    Type TEXT
+);
+
+CREATE INDEX favorites_name ON favorites(Name);
+selectAll:
+SELECT * FROM favorites;
+insert:
+INSERT INTO favorites(Pokemon_id, Name, Type) VALUES (?, ?, ?);
+find:
+SELECT * FROM favorites WHERE Id = ?;

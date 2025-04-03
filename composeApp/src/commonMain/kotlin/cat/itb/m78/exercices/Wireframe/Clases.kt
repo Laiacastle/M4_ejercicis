@@ -15,14 +15,14 @@ data class PokemonEntries(
 
 @Serializable
 data class Pokedex(
-    @SerialName("pokemon_entries") val pokemonEntries: List<PokemonEntries>
+    @SerialName("pokemon_entries") var pokemonEntries: List<PokemonEntries>
 )
 
 //DETAILS
 //URL BASE
 @Serializable
 data class PokemonDetails(
-    @SerialName("evolves_from_species") val evolutionOf: Evolve,
+    @SerialName("evolves_from_species") val evolutionOf: Evolve?,
     @SerialName("habitat") val habitat: Habitat,
     @SerialName("name") val name: String
 )
@@ -60,4 +60,10 @@ data class Type(
     @SerialName("name") val name: String
 )
 
+//FAVS
 
+@Serializable
+data class Favorites(
+    val model: PokemonDetails,
+    val fav: Boolean
+)
