@@ -1,0 +1,13 @@
+CREATE TABLE Faltas (
+       Id INTEGER NOT NULL,
+       Date TEXT NOT NULL
+);
+CREATE INDEX Faltas_info ON Faltas(Id);
+selectAll:
+SELECT * FROM Faltas;
+insert:
+INSERT INTO Faltas(Id, Date) VALUES (?, CONCAT(CURRENT_DATE, CURRENT_TIME ));
+find:
+SELECT * FROM Faltas WHERE Id = ?;
+delete:
+DELETE FROM Faltas WHERE Id = ?;

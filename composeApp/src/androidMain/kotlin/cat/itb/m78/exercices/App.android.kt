@@ -6,15 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import cat.itb.m78.exercices.Camera.CameraNavigation
+import cat.itb.m78.exercices.Camera.CameraScreen
 
 class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent { App() }
+        setContent { CameraNavigation() }
     }
 }
 
 @Preview
 @Composable
-fun AppPreview() { App() }
+fun AppPreview() { CameraNavigation() }

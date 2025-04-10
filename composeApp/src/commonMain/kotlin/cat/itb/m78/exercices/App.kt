@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import cat.itb.m78.exercices.Db.Screen
 import cat.itb.m78.exercices.Db.ScreenLanguages
+import cat.itb.m78.exercices.EXAMEN.ExamenNav
 import cat.itb.m78.exercices.Settings.Count
 import cat.itb.m78.exercices.Settings.Countries
 import cat.itb.m78.exercices.Settings.embassament.EmbassamentNav
@@ -20,6 +21,6 @@ import org.jetbrains.compose.reload.DevelopmentEntryPoint
 
 @Composable
 internal fun App() = AppTheme {
-    PokemonNav()
+    ExamenNav()
 
 }
