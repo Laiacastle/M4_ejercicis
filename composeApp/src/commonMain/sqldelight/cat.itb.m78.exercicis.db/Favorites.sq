@@ -12,3 +12,7 @@ insert:
 INSERT INTO favorites(Pokemon_id, Name, Type) VALUES (?, ?, ?);
 find:
 SELECT * FROM favorites WHERE Id = ?;
+delete:
+DELETE FROM favorites WHERE Id = ?;
+selectIds:
+SELECT Id FROM favorites;

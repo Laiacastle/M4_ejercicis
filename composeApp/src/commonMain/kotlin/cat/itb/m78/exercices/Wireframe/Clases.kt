@@ -64,6 +64,7 @@ data class Type(
 
 @Serializable
 data class Favorites(
-    val model: PokemonDetails,
-    val fav: Boolean
+    @SerialName("Pokemon_Id")val pokemonId: Int,
+    @SerialName("Name") val name : String,
+    @SerialName("Type") val type: String
 )
