@@ -25,6 +25,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,11 +39,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun ListScreen (navigateToScreenDetails: (Int) -> Unit){
     val model = viewModel{ ListVM() }
-    ListScreen(navigateToScreenDetails, model.pokemonList.value, model::addFavorite, model::BuscarId)
+    ListScreen(navigateToScreenDetails, model.pokemonList.value, model::changeFavorite, model::BuscarId)
 }
 
 @Composable
-fun ListScreen(navigateToScreenDetails: (Int) -> Unit, pokemonList: Pokedex?, addToFavs: (Int) -> Unit, comprovarId: (Int) -> Boolean){
+fun ListScreen(navigateToScreenDetails: (Int) -> Unit, pokemonList: Pokedex?, changeToFavs: (Int) -> Unit, comprovarId: (Int) -> Boolean){
     var text by remember  {mutableStateOf("")}
     Column(modifier = Modifier.padding(end = 15.dp).fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(15.dp), horizontalAlignment = Alignment.CenterHorizontally){
 
@@ -68,6 +69,7 @@ fun ListScreen(navigateToScreenDetails: (Int) -> Unit, pokemonList: Pokedex?, ad
                     }
                 }
                 itemsIndexed(filter) { _, pokemon ->
+                    val isFav = mutableStateOf(comprovarId(pokemon.entryNum))
                     Card(modifier = Modifier.fillMaxWidth()){
                         Row(modifier = Modifier.align(alignment = Alignment.CenterHorizontally)) {
 
@@ -77,27 +79,36 @@ fun ListScreen(navigateToScreenDetails: (Int) -> Unit, pokemonList: Pokedex?, ad
                                 ) {
                                     Text(pokemon.pokemonSpecies.name)
                                 }
-
-
-
                         Row(modifier = Modifier, horizontalArrangement = Arrangement.End) {
-                                IconButton(onClick = {addToFavs(pokemon.entryNum)}) {
+                                IconButton(onClick = {changeToFavs(pokemon.entryNum)
+                                isFav.value = comprovarId(pokemon.entryNum)}) {
 
-                                    if (comprovarId(pokemon.entryNum)) {
-                                        Icon(Icons.Default.Star, tint = Color.Yellow, contentDescription = "")
-                                    } else{
-                                        Icon(Icons.Default.Star, tint = Color.Gray, contentDescription = "")
-                                    }
+                                        if (isFav.value) {
+                                            Icon(
+                                                Icons.Default.Star,
+                                                tint = Color.Yellow,
+                                                contentDescription = ""
+                                            )
+
+
+                                        } else {
+                                            Icon(
+                                                Icons.Default.Star,
+                                                tint = Color.Gray,
+                                                contentDescription = ""
+                                            )
+
+
+                                        }
+
 
                                 }
-                        }
+                            }
                         }
                     }
 
-
                 }
+            }
 
-        }
-
-    }
+     }
 }}

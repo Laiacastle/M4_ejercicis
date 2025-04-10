@@ -35,10 +35,7 @@ fun ScreenFavorites(navigateToScreenList:()->Unit){
         ) {
             itemsIndexed(favorites) { _, favorite ->
                 Card(modifier = Modifier.fillMaxWidth()){
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        )
-                    {
+
                         Column(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalAlignment = Alignment.CenterHorizontally)
@@ -46,7 +43,7 @@ fun ScreenFavorites(navigateToScreenList:()->Unit){
                             Text("Name: " + favorite.Name)
                             Text("Type: " + favorite.Type.toString())
                         }
-                        IconButton(onClick = {model.DeleteFromFav(favorite.Id)}){
+                        IconButton(onClick = {model.DeleteFromFav(favorite.Pokemon_id)}){
                             Icon(
                                 imageVector = Icons.Default.Star,
                                 tint = Color.Yellow,
@@ -67,4 +64,4 @@ fun ScreenFavorites(navigateToScreenList:()->Unit){
 
 
 
-}
+

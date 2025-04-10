@@ -1,5 +1,4 @@
 CREATE TABLE favorites (
-    Id INTEGER PRIMARY KEY NOT NULL,
     Pokemon_id INTEGER NOT NULL,
     Name TEXT NOT NULL,
     Type TEXT
@@ -11,8 +10,8 @@ SELECT * FROM favorites;
 insert:
 INSERT INTO favorites(Pokemon_id, Name, Type) VALUES (?, ?, ?);
 find:
-SELECT * FROM favorites WHERE Id = ?;
+SELECT * FROM favorites WHERE Pokemon_id = ?;
 delete:
-DELETE FROM favorites WHERE Id = ?;
+DELETE FROM favorites WHERE Pokemon_id = ?;
 selectIds:
-SELECT Id FROM favorites;
+SELECT Pokemon_id FROM favorites;
