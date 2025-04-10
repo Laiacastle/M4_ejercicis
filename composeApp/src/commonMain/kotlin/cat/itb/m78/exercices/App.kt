@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import cat.itb.m78.exercices.Db.Screen
 import cat.itb.m78.exercices.Db.ScreenLanguages
 import cat.itb.m78.exercices.Settings.Count
@@ -20,5 +21,7 @@ import org.jetbrains.compose.reload.DevelopmentEntryPoint
 
 @Composable
 internal fun App() = AppTheme {
-    PokemonNav()
+
+        PokemonNav()
+
 }

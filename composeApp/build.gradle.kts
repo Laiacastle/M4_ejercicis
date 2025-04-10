@@ -125,6 +125,7 @@ dependencies {
 
     implementation(libs.androidx.room.compiler)
     implementation(libs.androidx.compose.material)
+    implementation(libs.material3.android)
     androidTestImplementation(libs.androidx.uitest.junit4)
     debugImplementation(libs.androidx.uitest.testManifest)
 }

@@ -3,6 +3,7 @@ package cat.itb.m78.exercices.Wireframe
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -38,8 +39,8 @@ fun PokemonNav(){
             NavigationBarItem(
                 selected = false,
                 onClick = {navController.navigate((DestinationPokemon.ScreenFavorites))},
-                icon = {Icon(imageVector = Icons.Default.Favorite, contentDescription = null)},
-                label = {Text("Favorites games")}
+                icon = {Icon(imageVector = Icons.Default.Star, contentDescription = null)},
+                label = {Text("Favorites pokemons")}
             )
         }
     }){
@@ -52,13 +53,14 @@ fun PokemonNav(){
             composable<DestinationPokemon.ScreenDetail> { backStack->
                 val id = backStack.toRoute<DestinationPokemon.ScreenDetail>().id
                 DetailScreen(
-                    navigateToScreenList = {navController.navigate((DestinationPokemon.ScreenList))},
+                    navigateToScreenList = {navController.navigate(DestinationPokemon.ScreenList)},
                     id
                 )
             }
             composable<DestinationPokemon.ScreenFavorites>{
                 ScreenFavorites(
-                    navigateToScreenList = {navController.navigate(((DestinationPokemon.ScreenList)))}
+                    navigateToScreenList = {navController.navigate(DestinationPokemon.ScreenList)},
+                    navigateToScreendetails = {navController.navigate(DestinationPokemon.ScreenDetail(it))}
                 )
             }
         }

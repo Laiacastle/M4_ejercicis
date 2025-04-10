@@ -14,4 +14,5 @@ class FavoritesMV : ViewModel() {
         favQueries.delete(id)
         favoritesList.value = favQueries.selectAll().executeAsList()
     }
+
 }

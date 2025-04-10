@@ -33,11 +33,12 @@ class ListVM : ViewModel() {
     fun changeFavorite(id : Int){
         viewModelScope.launch(Dispatchers.Default) {
             val pokemonDetails = MyApi.pokemonList(id)
+            val pokemonSprite = MyApi.detailsList(id)
             pokemon.value = pokemonDetails
             if(BuscarId(id)){
                 favQueries.delete(id.toLong())
             }else{
-                favQueries.insert(id.toLong(), pokemonDetails.name, pokemonDetails.habitat.name)
+                favQueries.insert(id.toLong(), pokemonDetails.name, pokemonDetails.habitat.name, pokemonSprite.sprites.front)
             }
             listIds.value = favQueries.selectIds().executeAsList()
         }

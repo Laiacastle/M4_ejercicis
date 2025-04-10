@@ -1,5 +1,6 @@
 package cat.itb.m78.exercices.Wireframe
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -33,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -44,10 +47,16 @@ fun ListScreen (navigateToScreenDetails: (Int) -> Unit){
 
 @Composable
 fun ListScreen(navigateToScreenDetails: (Int) -> Unit, pokemonList: Pokedex?, changeToFavs: (Int) -> Unit, comprovarId: (Int) -> Boolean){
-    var text by remember  {mutableStateOf("")}
-    Column(modifier = Modifier.padding(end = 15.dp).fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(15.dp), horizontalAlignment = Alignment.CenterHorizontally){
 
-        Row(modifier = Modifier.fillMaxWidth()){
+    var text by remember  {mutableStateOf("")}
+    Column(
+        modifier = Modifier.padding(end = 15.dp)
+            .fillMaxWidth().padding(10.dp)
+            .background(Color.LightGray),
+        verticalArrangement = Arrangement.spacedBy(15.dp),
+        horizontalAlignment = Alignment.CenterHorizontally){
+
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
 
             TextField(value = text,
                 onValueChange = { text = it },
@@ -70,38 +79,29 @@ fun ListScreen(navigateToScreenDetails: (Int) -> Unit, pokemonList: Pokedex?, ch
                 }
                 itemsIndexed(filter) { _, pokemon ->
                     val isFav = mutableStateOf(comprovarId(pokemon.entryNum))
-                    Card(modifier = Modifier.fillMaxWidth()){
-                        Row(modifier = Modifier.align(alignment = Alignment.CenterHorizontally)) {
+                    Card(modifier = Modifier.fillMaxWidth().clickable(onClick = {navigateToScreenDetails(pokemon.entryNum)}).align(Alignment.CenterHorizontally)
+                        ){
+                        Row(modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center) {
+                                    Text(pokemon.pokemonSpecies.name, textAlign = TextAlign.Center)
 
-                                Button(
-                                    onClick = { navigateToScreenDetails(pokemon.entryNum) },
-                                    modifier = Modifier
-                                ) {
-                                    Text(pokemon.pokemonSpecies.name)
-                                }
-                        Row(modifier = Modifier, horizontalArrangement = Arrangement.End) {
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, ) {
                                 IconButton(onClick = {changeToFavs(pokemon.entryNum)
                                 isFav.value = comprovarId(pokemon.entryNum)}) {
-
                                         if (isFav.value) {
                                             Icon(
                                                 Icons.Default.Star,
                                                 tint = Color.Yellow,
                                                 contentDescription = ""
                                             )
-
-
                                         } else {
                                             Icon(
                                                 Icons.Default.Star,
                                                 tint = Color.Gray,
                                                 contentDescription = ""
                                             )
-
-
                                         }
-
-
                                 }
                             }
                         }
