@@ -12,7 +12,7 @@ import com.google.accompanist.permissions.shouldShowRationale
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun FeatureThatRequiresCameraPermission(navigateToScreenMarkers: ()-> Unit) {
+fun FeatureThatRequiresCameraPermission(navigateToScreenCamera: ()-> Unit) {
     // Camera permission state
     val cameraPermissionState = rememberPermissionState(
         android.Manifest.permission.CAMERA
@@ -21,7 +21,7 @@ fun FeatureThatRequiresCameraPermission(navigateToScreenMarkers: ()-> Unit) {
 
         Text("Camera permission Granted")
         LaunchedEffect(true) {
-            navigateToScreenMarkers()
+            navigateToScreenCamera()
         }
 
     } else {

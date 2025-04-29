@@ -17,29 +17,32 @@ object DestinationMap {
     data object MapScreen
     @Serializable
     data object MarkersScreen
+    @Serializable
+    data object  AddMarkerScreen
 }
 
 @Composable
 fun MapNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = DestinationMap.PermissionScreen) {
+    NavHost(navController = navController, startDestination = DestinationMap.MarkersScreen) {
         composable<DestinationMap.PermissionScreen>{
             FeatureThatRequiresCameraPermission(
-                navigateToScreenMarkers= { navController.navigate(DestinationMap.MarkersScreen) }
+                navigateToScreenCamera= { navController.navigate(DestinationMap.CameraScreen) }
             )
         }
         composable<DestinationMap.MarkersScreen> {
 
             MarkersScreen(
-                navigateToScreenMap = {navController.navigate((DestinationMap.MapScreen))},
-                navigateToScreenCamera = {navController.navigate((DestinationMap.CameraScreen))}
+                navigateToScreenMap = {navController.navigate(DestinationMap.MapScreen)},
+                navigateToScreenMarkers = {navController.navigate(DestinationMap.MarkersScreen)},
+                navigateToScreenAddMarkers = {navController.navigate(DestinationMap.AddMarkerScreen)}
                 )
         }
         composable<DestinationMap.MapScreen> {
 
             MapScreen(
                 navigateToScreenMarkers = {navController.navigate((DestinationMap.MarkersScreen))},
-                navigateToScreenCamera = {navController.navigate((DestinationMap.CameraScreen))}
+                navigateToScreenMap = {navController.navigate((DestinationMap.MapScreen))}
                 )
         }
         composable<DestinationMap.CameraScreen> {
@@ -47,7 +50,15 @@ fun MapNavigation(){
             CameraScreen(
                 navigateToScreenMarkers = {navController.navigate((DestinationMap.CameraScreen))},
                 navigateToScreenMap = {navController.navigate((DestinationMap.MapScreen))}
+
                 )
+        }
+        composable<DestinationMap.AddMarkerScreen> {
+            AddMarkerScreen(
+                navigateToScreenMarkers = {navController.navigate((DestinationMap.MarkersScreen))},
+                navigateToScreenMap = {navController.navigate((DestinationMap.MapScreen))},
+                navigateToScreenPermission = {navController.navigate((DestinationMap.PermissionScreen))}
+            )
         }
 
     }

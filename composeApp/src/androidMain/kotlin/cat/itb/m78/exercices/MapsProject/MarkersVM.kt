@@ -5,7 +5,13 @@ import androidx.lifecycle.ViewModel
 import cat.itb.m78.exercices.Db.database
 
 class MarkersVM() : ViewModel(){
-    val markQueries = database.markersqueries
-    var markersList = markQueries.selectAll().executeAsList()
+    val markQueries = database.markerQueries
+    var markersList = mutableStateOf(markQueries.selectAll().executeAsList())
+    fun addMarker(newMark : Markers){
+        markQueries.insert(newMark.positionX, newMark.positionY, newMark.title)
+    }
+    fun updateList(){
+        markersList.value = markQueries.selectAll().executeAsList()
+    }
 
 }

@@ -14,7 +14,9 @@ import androidx.camera.core.SurfaceRequest
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.lifecycle.awaitInstance
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -81,23 +83,32 @@ class CameraViewModel() : ViewModel(){
 
 @Composable
 fun CameraScreen(navigateToScreenMap: () -> Unit, navigateToScreenMarkers : ()-> Unit){
-    val viewModel = viewModel{CameraViewModel() }
-    val context = LocalContext.current
-    val lifecycleOwner = LocalLifecycleOwner.current
-    LaunchedEffect(lifecycleOwner) {
-        viewModel.bindToCamera(context.applicationContext, lifecycleOwner)
-    }
-    val surfaceRequest = viewModel.surferRequest.value
-    val imageCaptureUseCase = viewModel.imageCaptureUseCase
-    surfaceRequest?.let { request ->
-        Box {
-            CameraXViewfinder(
-                surfaceRequest = request,
-                modifier = Modifier.fillMaxSize()
-            )
-            Button({ takePhoto(context, imageCaptureUseCase); navigateToScreenMarkers()}){
-                Text("Take Photo")
+    DrawerMenu (
+        content = { innerPadding ->
+            Column(modifier = Modifier.padding(innerPadding)) {
+                val viewModel = viewModel{CameraViewModel() }
+                val context = LocalContext.current
+                val lifecycleOwner = LocalLifecycleOwner.current
+                LaunchedEffect(lifecycleOwner) {
+                    viewModel.bindToCamera(context.applicationContext, lifecycleOwner)
+                }
+                val surfaceRequest = viewModel.surferRequest.value
+                val imageCaptureUseCase = viewModel.imageCaptureUseCase
+                surfaceRequest?.let { request ->
+                    Box {
+                        CameraXViewfinder(
+                            surfaceRequest = request,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        Button({ takePhoto(context, imageCaptureUseCase); navigateToScreenMarkers()}){
+                            Text("Take Photo")
+                        }
+                    }
+
             }
-        }
+        }},
+        navigateToScreenMap,
+        navigateToScreenMarkers
+    )
+
     }
-}
