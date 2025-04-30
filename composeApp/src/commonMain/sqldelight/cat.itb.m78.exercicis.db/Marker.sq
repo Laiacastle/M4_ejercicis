@@ -2,13 +2,14 @@ CREATE TABLE Marker (
         Id INTEGER PRIMARY KEY,
         PositionX REAL NOT NULL,
         PositionY REAL NOT NULL,
-        Title TEXT
+        Title TEXT,
+        Img TEXT
 );
 
 CREATE INDEX marker_index ON Marker(Id);
 selectAll:
 SELECT * FROM Marker;
 insert:
-INSERT INTO Marker(PositionX, PositionY, Title) VALUES (?, ?, ?);
+INSERT INTO Marker(PositionX, PositionY, Title, Img) VALUES (?, ?, ?, ?);
 find:
 SELECT * FROM Marker WHERE Id = ?;

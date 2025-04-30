@@ -32,6 +32,15 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="cat.itb.m78.exercices.ContextProvider"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>

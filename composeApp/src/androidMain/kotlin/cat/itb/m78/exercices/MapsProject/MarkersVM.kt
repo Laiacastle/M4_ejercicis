@@ -8,7 +8,7 @@ class MarkersVM() : ViewModel(){
     val markQueries = database.markerQueries
     var markersList = mutableStateOf(markQueries.selectAll().executeAsList())
     fun addMarker(newMark : Markers){
-        markQueries.insert(newMark.positionX, newMark.positionY, newMark.title)
+        markQueries.insert(newMark.positionX, newMark.positionY, newMark.title, newMark.img)
     }
     fun updateList(){
         markersList.value = markQueries.selectAll().executeAsList()

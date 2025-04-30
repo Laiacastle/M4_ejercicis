@@ -45,7 +45,9 @@ fun AddMarkerScreen(navigateToScreenPermission:()->Unit, navigateToScreenMarkers
                     label = { Text("Title") },
                     modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
                 )
-
+                Button(onClick = navigateToScreenPermission) {
+                    Text("Add a photo")
+                }
             }
         },
         navigateToScreenMap,
