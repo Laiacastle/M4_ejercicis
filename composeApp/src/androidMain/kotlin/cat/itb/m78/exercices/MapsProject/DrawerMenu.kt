@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -14,7 +13,6 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -83,7 +81,6 @@ fun DrawerMenu(
     ) {
         Scaffold { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
-                // Menú arriba a la izquierda
                 IconButton(
                     onClick = {
                         scope.launch {
@@ -96,9 +93,8 @@ fun DrawerMenu(
                     Icon(Icons.Default.Menu, contentDescription = "Menu")
                 }
 
-                // Contenido principal debajo del botón
                 Column {
-                    Spacer(modifier = Modifier.height(56.dp)) // Espacio para el botón
+                    Spacer(modifier = Modifier.height(56.dp))
                     content(PaddingValues())
                 }
             }

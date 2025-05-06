@@ -49,7 +49,7 @@ fun AddMarkerScreen(
 
                     var title by remember { mutableStateOf("") }
 
-                    // Use OutlinedTextField with rounded corners and custom colors
+
                     OutlinedTextField(
                         value = title,
                         onValueChange = { title = it },

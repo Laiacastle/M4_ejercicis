@@ -12,31 +12,47 @@ import kotlinx.serialization.Serializable
 
 object DestinationMap {
     @Serializable
-    data object PermissionScreen
+    data class PermissionScreen(val lat: Double, val lng: Double) {
+        fun route() = "permission/$lat/$lng"
+    }
+
     @Serializable
-    data object CameraScreen
+    data class CameraScreen(val lat: Double, val lng: Double) {
+        fun route() = "camera/$lat/$lng"
+    }
+
     @Serializable
-    data object MapScreen
+    data object MapScreen {
+        fun route() = "map"
+    }
+
     @Serializable
-    data object MarkersScreen
+    data object MarkersScreen {
+        fun route() = "markers"
+    }
+
     @Serializable
-    data class  AddMarkerScreen(val photo: String)
+    data class AddMarkerScreen(val lat: Double, val lng: Double, val photo: String?) {
+        fun route() = "add_marker/$lat/$lng?photo_uri=${photo ?: ""}"
+    }
 }
 
 @Composable
 fun MapNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "markers") {
+    NavHost(navController = navController, startDestination = DestinationMap.MarkersScreen.route()) {
 
         composable("map") {
             MapScreen(
                 onMapClick = { latLng ->
-                    navController.currentBackStackEntry?.savedStateHandle?.set("lat", latLng.latitude)
-                    navController.currentBackStackEntry?.savedStateHandle?.set("lng", latLng.longitude)
-                    navController.navigate("permission/${latLng.latitude}/${latLng.longitude}")
+                    navController.navigate(DestinationMap.PermissionScreen(latLng.latitude, latLng.longitude).route())
                 },
-                navigateToScreenMarkers = { navController.navigate("markers") },
-                navigateToScreenMap = { navController.navigate("map") }
+                navigateToScreenMarkers = {
+                    navController.navigate(DestinationMap.MarkersScreen.route())
+                },
+                navigateToScreenMap = {
+                    navController.navigate(DestinationMap.MapScreen.route())
+                }
             )
         }
 
@@ -46,7 +62,7 @@ fun MapNavigation() {
 
             FeatureThatRequiresCameraPermission(
                 navigateToScreenCamera = {
-                    navController.navigate("camera/${lat}/${lng}")
+                    navController.navigate(DestinationMap.CameraScreen(lat, lng).route())
                 }
             )
         }
@@ -57,10 +73,14 @@ fun MapNavigation() {
 
             CameraScreen(
                 navigateBackWithPhoto = { uri ->
-                    navController.navigate("add_marker/${lat}/${lng}?photo_uri=$uri")
+                    navController.navigate(DestinationMap.AddMarkerScreen(lat, lng, uri).route())
                 },
-                navigateToScreenMarkers = { navController.navigate("markers") },
-                navigateToScreenMap = { navController.navigate("map") }
+                navigateToScreenMarkers = {
+                    navController.navigate(DestinationMap.MarkersScreen.route())
+                },
+                navigateToScreenMap = {
+                    navController.navigate(DestinationMap.MapScreen.route())
+                }
             )
         }
 
@@ -73,17 +93,25 @@ fun MapNavigation() {
                 lat = lat,
                 lng = lng,
                 photoUri = photoUri,
-                navigateToScreenMarkers = { navController.navigate("markers") },
-                navigateToScreenMap = { navController.navigate("map") }
+                navigateToScreenMarkers = {
+                    navController.navigate(DestinationMap.MarkersScreen.route())
+                },
+                navigateToScreenMap = {
+                    navController.navigate(DestinationMap.MapScreen.route())
+                }
             )
         }
 
         composable("markers") {
             MarkersScreen(
-                navigateToScreenMap = { navController.navigate("map") },
-                navigateToScreenMarkers = { navController.navigate("markers") },
+                navigateToScreenMap = {
+                    navController.navigate(DestinationMap.MapScreen.route())
+                },
+                navigateToScreenMarkers = {
+                    navController.navigate(DestinationMap.MarkersScreen.route())
+                },
                 navigateToScreenAddMarkers = {
-                    navController.navigate("map") // <<< empieza el flujo desde el mapa
+                    navController.navigate(DestinationMap.MapScreen.route())
                 }
             )
         }

@@ -72,7 +72,7 @@ fun MarkersScreen(
                         val filter = markers.filter{it.Title.toString().contains(text, ignoreCase = true)}
                         if(filter.isEmpty()){
                             item{
-                                Text("No s'ha trobat cap pokemon")
+                                Text("No PokeStop found")
                             }
                         }
                         itemsIndexed(filter){ _, mark ->
