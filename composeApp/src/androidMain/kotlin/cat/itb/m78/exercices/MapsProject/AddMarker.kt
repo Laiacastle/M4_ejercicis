@@ -1,71 +1,87 @@
 package cat.itb.m78.exercices.MapsProject
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import catitbm78exercicisdb.Marker
 
 @Composable
-fun AddMarkerScreen(navigateToScreenPermission:()->Unit, navigateToScreenMarkers: ()->Unit, navigateToScreenMap: () -> Unit){
-    val model = viewModel{ MarkersVM() }
-    val cameraModel = viewModel{ CameraViewModel() }
-    DrawerMenu (
+fun AddMarkerScreen(
+    lat: Double,
+    lng: Double,
+    photoUri: String?,
+    navigateToScreenMarkers: () -> Unit,
+    navigateToScreenMap: () -> Unit
+) {
+    val backgroundColor = Color(0xFFF1F8E9)
+    val buttonColor = Color(0xFFB2DFDB)
+
+    val model = viewModel { MarkersVM() }
+
+    DrawerMenu(
         content = { innerPadding ->
-            Column(modifier = Modifier.padding(innerPadding)) {
-                var textX by remember{mutableStateOf(" ")}
-                var textY by remember{mutableStateOf(" ")}
-                var text by remember {mutableStateOf(" ")}
-                TextField(
-                    value = textX,
-                    onValueChange = { textX = it },
-                    label = { Text("Coordenadas X") },
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
-                )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .background(backgroundColor)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp)
+                        .align(Alignment.TopCenter),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Add New Marker",
+                        style = MaterialTheme.typography.headlineSmall
+                    )
 
-                TextField(
-                    value = textY,
-                    onValueChange = { textY = it },
-                    label = { Text("Coordenadas Y") },
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
-                )
-                TextField(
-                    value = text,
-                    onValueChange = { text = it },
-                    label = { Text("Title") },
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
-                )
-                Button(onClick = navigateToScreenPermission) {
-                    Text("Add a photo")
+                    var title by remember { mutableStateOf("") }
 
-                }
-                val img by cameraModel.photo
+                    // Use OutlinedTextField with rounded corners and custom colors
+                    OutlinedTextField(
+                        value = title,
+                        onValueChange = { title = it },
+                        label = { Text("Title") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                    )
 
-                if(textY != "" && textX != "" ){
-                    Button(onClick = {model.addMarker(Marker(1, textX.toDouble(), textY.toDouble(), text, img.toString()))}) {
-                        Text("Add")
-
+                    Button(
+                        onClick = {
+                            model.addMarker(
+                                Marker(
+                                    Id = 0,
+                                    PositionX = lat,
+                                    PositionY = lng,
+                                    Title = title,
+                                    Img = photoUri ?: ""
+                                )
+                            )
+                            navigateToScreenMarkers()
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = buttonColor),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Save Marker")
                     }
                 }
-
-
             }
         },
         navigateToScreenMap,
         navigateToScreenMarkers
     )
-
 }

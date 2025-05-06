@@ -13,3 +13,5 @@ insert:
 INSERT INTO Marker(PositionX, PositionY, Title, Img) VALUES (?, ?, ?, ?);
 find:
 SELECT * FROM Marker WHERE Id = ?;
+delete:
+DELETE FROM Marker WHERE Id = ?;

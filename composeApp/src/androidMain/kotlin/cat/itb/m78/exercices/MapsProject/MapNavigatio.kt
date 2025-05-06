@@ -1,5 +1,7 @@
 package cat.itb.m78.exercices.MapsProject
 
+import CameraScreen
+import MapScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,37 +26,65 @@ object DestinationMap {
 @Composable
 fun MapNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = DestinationMap.MarkersScreen) {
-        composable<DestinationMap.PermissionScreen> {
-            FeatureThatRequiresCameraPermission(
-                navigateToScreenCamera = { navController.navigate(DestinationMap.CameraScreen) }
-            )
-        }
-        composable<DestinationMap.MarkersScreen> {
-            MarkersScreen(
-                navigateToScreenMap = { navController.navigate(DestinationMap.MapScreen) },
-                navigateToScreenMarkers = { navController.navigate(DestinationMap.MarkersScreen) },
-                navigateToScreenAddMarkers = { navController.navigate(DestinationMap.AddMarkerScreen) }
-            )
-        }
-        composable<DestinationMap.MapScreen> {
-            MapScreen(
-                navigateToScreenMarkers = { navController.navigate(DestinationMap.MarkersScreen) },
-                navigateToScreenMap = { navController.navigate(DestinationMap.MapScreen) }
-            )
-        }
-        composable<DestinationMap.CameraScreen> {
-            CameraScreen(
-                navigateToScreenMarkers = { navController.navigate(DestinationMap.MarkersScreen) },
-                navigateToScreenMap = { navController.navigate(DestinationMap.MapScreen) }
-            )
-        }
-        composable<DestinationMap.AddMarkerScreen> {
-            AddMarkerScreen(
-                navigateToScreenMarkers = { navController.navigate(DestinationMap.MarkersScreen) },
-                navigateToScreenMap = { navController.navigate(DestinationMap.MapScreen) },
-                navigateToScreenPermission = { navController.navigate(DestinationMap.PermissionScreen) }
+    NavHost(navController = navController, startDestination = "markers") {
 
+        composable("map") {
+            MapScreen(
+                onMapClick = { latLng ->
+                    navController.currentBackStackEntry?.savedStateHandle?.set("lat", latLng.latitude)
+                    navController.currentBackStackEntry?.savedStateHandle?.set("lng", latLng.longitude)
+                    navController.navigate("permission/${latLng.latitude}/${latLng.longitude}")
+                },
+                navigateToScreenMarkers = { navController.navigate("markers") },
+                navigateToScreenMap = { navController.navigate("map") }
+            )
+        }
+
+        composable("permission/{lat}/{lng}") { backStackEntry ->
+            val lat = backStackEntry.arguments?.getString("lat")?.toDoubleOrNull() ?: 0.0
+            val lng = backStackEntry.arguments?.getString("lng")?.toDoubleOrNull() ?: 0.0
+
+            FeatureThatRequiresCameraPermission(
+                navigateToScreenCamera = {
+                    navController.navigate("camera/${lat}/${lng}")
+                }
+            )
+        }
+
+        composable("camera/{lat}/{lng}") { backStackEntry ->
+            val lat = backStackEntry.arguments?.getString("lat")?.toDoubleOrNull() ?: 0.0
+            val lng = backStackEntry.arguments?.getString("lng")?.toDoubleOrNull() ?: 0.0
+
+            CameraScreen(
+                navigateBackWithPhoto = { uri ->
+                    navController.navigate("add_marker/${lat}/${lng}?photo_uri=$uri")
+                },
+                navigateToScreenMarkers = { navController.navigate("markers") },
+                navigateToScreenMap = { navController.navigate("map") }
+            )
+        }
+
+        composable("add_marker/{lat}/{lng}?photo_uri={photo_uri}") { backStackEntry ->
+            val lat = backStackEntry.arguments?.getString("lat")?.toDoubleOrNull() ?: 0.0
+            val lng = backStackEntry.arguments?.getString("lng")?.toDoubleOrNull() ?: 0.0
+            val photoUri = backStackEntry.arguments?.getString("photo_uri")
+
+            AddMarkerScreen(
+                lat = lat,
+                lng = lng,
+                photoUri = photoUri,
+                navigateToScreenMarkers = { navController.navigate("markers") },
+                navigateToScreenMap = { navController.navigate("map") }
+            )
+        }
+
+        composable("markers") {
+            MarkersScreen(
+                navigateToScreenMap = { navController.navigate("map") },
+                navigateToScreenMarkers = { navController.navigate("markers") },
+                navigateToScreenAddMarkers = {
+                    navController.navigate("map") // <<< empieza el flujo desde el mapa
+                }
             )
         }
     }

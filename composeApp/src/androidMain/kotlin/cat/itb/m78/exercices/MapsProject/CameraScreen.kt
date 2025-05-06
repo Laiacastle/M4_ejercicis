@@ -1,5 +1,34 @@
-package cat.itb.m78.exercices.MapsProject
-
+import androidx.camera.compose.CameraXViewfinder
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.Recomposer
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.text.style.LineHeightStyle.Alignment.*
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.viewmodel.compose.viewModel
+import cat.itb.m78.exercices.MapsProject.DrawerMenu
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
@@ -13,30 +42,13 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.core.SurfaceRequest
 import androidx.compose.runtime.State
-import androidx.camera.core.impl.CameraInternal
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.lifecycle.awaitInstance
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.Recomposer
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.compose.LocalLifecycleOwner
-import androidx.lifecycle.viewmodel.compose.viewModel
+import cat.itb.m78.exercices.MapsProject.MarkersVM
 import kotlinx.coroutines.awaitCancellation
-
-
 
 class CameraViewModel() : ViewModel() {
 
@@ -113,39 +125,77 @@ class CameraViewModel() : ViewModel() {
     }
 }
 
-
-
 @Composable
-fun CameraScreen(navigateToScreenMap: () -> Unit, navigateToScreenMarkers : ()-> Unit){
+fun CameraScreen(
+    navigateBackWithPhoto: (String) -> Unit,
+    navigateToScreenMarkers: () -> Unit,
+    navigateToScreenMap: () -> Unit
+) {
+    val backgroundColor = Color(0xFFF1F8E9)
+    val cameraBoxBg = Color(0xFFFFF3E0)
+    val buttonColor = Color(0xFFB2DFDB)
 
-    DrawerMenu (
+    DrawerMenu(
         content = { innerPadding ->
-            val viewModel: CameraViewModel = viewModel()
+            val viewModel = viewModel { CameraViewModel() }
             val context = LocalContext.current
             val lifecycleOwner = LocalLifecycleOwner.current
 
-            LaunchedEffect(lifecycleOwner) {
-                viewModel.bindToCamera(context.applicationContext, lifecycleOwner)
+            LaunchedEffect(Unit) {
+                viewModel.bindToCamera(context, lifecycleOwner)
             }
 
             val surfaceRequest = viewModel.surferRequest.value
             surfaceRequest?.let { request ->
-                Box {
-                    CameraXViewfinder(
-                        surfaceRequest = request,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                    Button(onClick = {
-                        viewModel.takePhoto(context)
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                        .background(backgroundColor)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .padding(24.dp)
+                            .align(Alignment.TopCenter),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            "Capture Marker Photo",
+                            style = MaterialTheme.typography.headlineSmall,
+                            modifier = Modifier.padding(bottom = 16.dp)
+                        )
 
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .aspectRatio(3f / 4f)
+                                .clip(RoundedCornerShape(16.dp))
+                                .background(cameraBoxBg)
+                        ) {
+                            CameraXViewfinder(
+                                surfaceRequest = request,
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        }
 
-                    }) {
-                        Text("Take Photo")
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Button(
+                            onClick = {
+                                viewModel.takePhoto(context)
+                                viewModel.photo.value?.let {
+                                    navigateBackWithPhoto(it.toString())
+                                }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = buttonColor)
+                        ) {
+                            Text("Take Photo")
+                        }
                     }
                 }
-        }},
+            }
+        },
         navigateToScreenMap,
         navigateToScreenMarkers
     )
-
-    }
+}
