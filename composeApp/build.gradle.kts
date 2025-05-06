@@ -116,7 +116,7 @@ android {
 
     defaultConfig {
 
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
 
         applicationId = "cat.itb.m78.exercices.androidApp"
@@ -134,6 +134,7 @@ android {
 //https://developer.android.com/develop/ui/compose/testing#setup
 dependencies {
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.benchmark.macro)
     androidTestImplementation(libs.androidx.uitest.junit4)
     debugImplementation(libs.androidx.uitest.testManifest)
 }

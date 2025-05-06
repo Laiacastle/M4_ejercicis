@@ -17,15 +17,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import catitbm78exercicisdb.Marker
 
 @Composable
 fun AddMarkerScreen(navigateToScreenPermission:()->Unit, navigateToScreenMarkers: ()->Unit, navigateToScreenMap: () -> Unit){
+    val model = viewModel{ MarkersVM() }
+    val cameraModel = viewModel{ CameraViewModel() }
     DrawerMenu (
         content = { innerPadding ->
             Column(modifier = Modifier.padding(innerPadding)) {
-                var textX by remember{mutableStateOf("")}
-                var textY by remember{mutableStateOf("")}
-                var text by remember {mutableStateOf("")}
+                var textX by remember{mutableStateOf(" ")}
+                var textY by remember{mutableStateOf(" ")}
+                var text by remember {mutableStateOf(" ")}
                 TextField(
                     value = textX,
                     onValueChange = { textX = it },
@@ -47,7 +50,18 @@ fun AddMarkerScreen(navigateToScreenPermission:()->Unit, navigateToScreenMarkers
                 )
                 Button(onClick = navigateToScreenPermission) {
                     Text("Add a photo")
+
                 }
+                val img by cameraModel.photo
+
+                if(textY != "" && textX != "" ){
+                    Button(onClick = {model.addMarker(Marker(1, textX.toDouble(), textY.toDouble(), text, img.toString()))}) {
+                        Text("Add")
+
+                    }
+                }
+
+
             }
         },
         navigateToScreenMap,
