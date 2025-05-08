@@ -40,15 +40,21 @@ import androidx.camera.core.SurfaceRequest
 import androidx.compose.runtime.State
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.lifecycle.awaitInstance
+import androidx.compose.ui.text.font.FontVariation
+import com.russhwolf.settings.Settings
+import com.russhwolf.settings.set
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.awaitCancellation
-
+private const val LAST_PHOTO_KEY = "lastPhoto"
 class CameraViewModel() : ViewModel() {
 
     private val _savedPhotoUri = mutableStateOf<Uri?>(null)
     val photo: State<Uri?> = _savedPhotoUri
-
+    val settings: Settings = Settings()
+    val lastPhotoView = settings.getString(LAST_PHOTO_KEY, "https://www.computerhope.com/jargon/e/error.png")
+    var lastPhoto = mutableStateOf<Uri?>(lastPhotoView.toUri())
     val surferRequest = mutableStateOf<SurfaceRequest?>(null)
 
     private val cameraPreviewUseCase = Preview.Builder().build().apply {
@@ -112,10 +118,20 @@ class CameraViewModel() : ViewModel() {
                     }
                     Log.d("CameraViewModel", "Foto guardada: ${output.savedUri}")
                     _savedPhotoUri.value = output.savedUri
+
                 }
             }
         )
+    }
+    //Agafar l'última foto
+    fun changeLastPhoto(){
+        lastPhoto.value = photo.value
+        settings[LAST_PHOTO_KEY] =  lastPhoto.value.toString()
 
+    }
+
+    init {
+        settings[LAST_PHOTO_KEY] =  lastPhoto.value.toString()
     }
 }
 
@@ -176,15 +192,31 @@ fun CameraScreen(
 
                         Button(
                             onClick = {
+
                                 viewModel.takePhoto(context)
+                                viewModel.changeLastPhoto()
                                 viewModel.photo.value?.let {
-                                    navigateBackWithPhoto(it.toString())
+
+                                    navigateBackWithPhoto(viewModel.photo.value.toString())
                                 }
                             },
                             colors = ButtonDefaults.buttonColors(containerColor = buttonColor)
                         ) {
                             Text("Take Photo")
                         }
+                    if(viewModel.lastPhoto.value.toString() != "https://www.computerhope.com/jargon/e/error.png") {
+                        Button(
+                            onClick = {
+                                viewModel.lastPhoto.value?.let {
+                                    navigateBackWithPhoto(it.toString())
+                                }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = buttonColor)
+                        ) {
+                            Text("Select last photo")
+                        }
+                    }
+
                     }
                 }
             }

@@ -23,14 +23,14 @@ fun MarkersScreen(
     navigateToScreenMarkers: () -> Unit,
     navigateToScreenAddMarkers: () -> Unit
 ) {
-    // Define pastel colors
-    val pastelCardColor = Color(0xFFFFF3E0) // light peach
-    val pastelImageBg = Color(0xFFE1F5FE) // light blue
-    val buttonColor = Color(0xFFB2DFDB) // mint green
-    val deleteButtonColor = Color(0xFFFFCDD2) // light red for delete button
+    //  colors
+    val pastelCardColor = Color(0xFFFFF3E0)
+    val pastelImageBg = Color(0xFFE1F5FE)
+    val buttonColor = Color(0xFFB2DFDB)
+    val deleteButtonColor = Color(0xFFFFCDD2)
 
     val model = viewModel { MarkersVM() }
-    model.updateList()  // Ensure we have the latest list of markers
+    model.updateList()
     val markers = model.markersList.value
 
     DrawerMenu(
@@ -39,7 +39,7 @@ fun MarkersScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
-                    .background(Color(0xFFF1F8E9)) // very light green background
+                    .background(Color(0xFFF1F8E9))
             ) {
                 Column(
                     modifier = Modifier
