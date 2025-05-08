@@ -1,12 +1,9 @@
 name: Android CI - debug apk
 
-#on:
-#  workflow_dispatch:
-#    { }
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["MapAndCameraProject"]
+  workflow_dispatch:
+    { }
+
 
 jobs:
   build:
